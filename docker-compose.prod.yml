@@ -9,7 +9,7 @@ wordpress:
         https_proxy: ${https_proxy}
         WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
     volumes:
-        - ./wp-content/uploads:/var/www/html/wp-content/uploads
+        - wordpress:/var/www/html
     restart: always
 
 db:
