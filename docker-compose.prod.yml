@@ -1,4 +1,7 @@
-wordpress:
+version: "2"
+ 
+services:
+  wordpress:
     image: insermbiblio/wordpress:4.9.6-apache
     ports:
         - 8080:8080
@@ -12,7 +15,7 @@ wordpress:
         - wordpress:/var/www/html
     restart: always
 
-db:
+  db:
     image: mariadb:10.0
     environment:
         MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
