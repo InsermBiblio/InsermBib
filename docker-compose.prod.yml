@@ -21,3 +21,6 @@ db:
     volumes:
         - /applis/insermbib/home/mariadb:/var/lib/mysql
     restart: always
+    
+volumes:
+  wordpress: # Contient le code HTML pour wordpress
