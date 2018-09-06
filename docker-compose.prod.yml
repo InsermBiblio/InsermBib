@@ -1,0 +1,23 @@
+wordpress:
+    image: insermbiblio/wordpress:4.9.6-apache
+    ports:
+        - 8080:8080
+    links:
+        - db:mysql
+    environment:
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+        WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+        - ./wp-content/uploads:/var/www/html/wp-content/uploads
+    restart: always
+
+db:
+    image: mariadb:10.0
+    environment:
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        PORT: 3305
+        TERM: dumb
+    volumes:
+        - /applis/insermbib/home/mariadb:/var/lib/mysql
+    restart: always
