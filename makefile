@@ -43,14 +43,11 @@ else
 	@ls -h ./backups
 endif
 
-deactivate_plugin: ## deactivate all wordpress plugin
-	docker exec -i insermbib_db_1 mysql --password='$(DB_PASSWORD)' wordpress -e "UPDATE wp_options SET option_value = '' WHERE option_name = 'active_plugins';"
-
 _restore_db:
 	cat backups/$(COMMAND_ARGS) | docker exec -i insermbib_db_1 sh -c 'cat | mysql --password='$(DB_PASSWORD)' wordpress'
 
 connect-mysql: ## connect into mysql
-	docker exec -it bibcnrs_db_1 mysql --password wordpress
+	docker exec -it insermbib_db_1 mysql --password wordpress
 
 
 run-prod: ## launch insermbib for production environment
