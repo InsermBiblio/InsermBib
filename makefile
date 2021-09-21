@@ -51,7 +51,7 @@ connect-mysql: ## connect into mysql
 
 
 run-prod: ## launch insermbib for production environment
-	docker-compose -f docker-compose.prod.yml up -d --force-recreate
+	docker-compose -f docker-compose.prod.yml up --force-recreate
 
 cleanup-docker: ## remove all insermbib docker image
 	test -z "$$(docker ps -a | grep insermbib)" || \

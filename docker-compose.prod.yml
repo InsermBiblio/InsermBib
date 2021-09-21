@@ -1,4 +1,4 @@
-version: "2"
+version: "3.5"
  
 services:
   wordpress:
@@ -14,7 +14,8 @@ services:
     volumes:
         - wordpress:/var/www/html
     restart: always
-
+    networks:
+      - insfrontend
   db:
     image: mariadb:10.0
     environment:
@@ -24,6 +25,16 @@ services:
     volumes:
         - /applis/insermbib/home/mariadb:/var/lib/mysql
     restart: always
-    
+    networks:
+      - insbackend
+
 volumes:
   wordpress: # Contient le code HTML pour wordpress
+
+networks:
+  insbackend:
+    driver: bridge
+    name: insbackend
+  insfrontend:
+    driver: bridge
+    name: insfrontend
