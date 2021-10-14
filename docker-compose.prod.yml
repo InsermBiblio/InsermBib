@@ -15,7 +15,11 @@ services:
         - wordpress:/var/www/html
     restart: always
     networks:
-      - insfrontend
+      insfrontend :
+      insbackend :
+        aliases:
+          - wordpress
+
   db:
     image: mariadb:10.0
     environment:
@@ -26,7 +30,9 @@ services:
         - /applis/insermbib/home/mariadb:/var/lib/mysql
     restart: always
     networks:
-      - insbackend
+      insbackend :
+        aliases:
+          - mysql
 
 volumes:
   wordpress: # Contient le code HTML pour wordpress
