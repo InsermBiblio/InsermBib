@@ -2,7 +2,7 @@ version: "3.5"
  
 services:
   wordpress:
-    image: insermbiblio/wordpress:5.9.0-apache
+    image: insermbiblio/wordpress:6.2.0-apache
     ports:
         - 8080:8080
     links:
